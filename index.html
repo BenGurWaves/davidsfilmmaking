@@ -8,7 +8,7 @@
 </head>
 <body>
   <!-- Hero Section -->
-  <section class="hero">
+  <section class="hero fade-in">
     <video autoplay muted loop playsinline preload="auto">
       <source src="David Web Back.mp4" type="video/mp4">
       Your browser does not support the video tag.
@@ -20,7 +20,7 @@
   </section>
 
   <!-- Featured Film Section -->
-  <section class="featured">
+  <section class="featured fade-in">
     <div class="featured-text">
       <h2>Why Do I Make Films?</h2>
       <p>
@@ -44,14 +44,14 @@
   </section>
 
   <!-- Gallery Section -->
-  <section class="gallery">
+  <section class="gallery fade-in">
     <img src="IMG-20250705-WA0021.jpg" alt="Gallery Image 1">
     <img src="IMG-20250705-WA0020.jpg" alt="Gallery Image 2">
     <img src="IMG-20250705-WA0019.jpg" alt="Gallery Image 3">
   </section>
 
   <!-- Contact Section -->
-  <section class="contact">
+  <section class="contact fade-in">
     <h2>Contact</h2>
     <p>
       For brand inquiries reach out to<br>
@@ -63,6 +63,27 @@
   <footer>
     ©DavidIvanyuck2025
   </footer>
+
+  <!-- Scroll Animation Script -->
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+
+    const appearOptions = {
+      threshold: 0.2,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+  </script>
 </body>
 </html>
-
