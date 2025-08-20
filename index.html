@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DavidsFilmmaking</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      color: white;
+      background-color: #000;
+    }
+    .hero {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .hero video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: -1;
+    }
+    .hero-content {
+      z-index: 2;
+      padding: 20px;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .contact {
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <video autoplay muted loop playsinline>
+      <!-- replace 'background.mp4' with your video file once uploaded -->
+      <source src="background.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-content">
+      <h1>David Ivanyuck</h1>
+      <p>I’m a Filmmaker / Artist.<br>This is my website, Enjoy.</p>
+      <p class="contact">For brand inquiries reach out to<br>
+        <a href="mailto:dfilmmaking@gmail.com" style="color: #ffd700;">dfilmmaking@gmail.com</a>
+      </p>
+    </div>
+  </section>
+</body>
+</html>
