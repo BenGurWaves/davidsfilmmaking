@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Davidsfilmmaking</title>
+  <title>Davids Filmmaking</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- Hero Section -->
-  <section class="hero fade-in">
-    <video autoplay muted loop playsinline preload="auto">
-      <source src="David Web Back.mp4" type="video/mp4">
-      Your browser does not support the video tag.
+  <section class="hero">
+    <video autoplay muted loop playsinline preload="auto" poster="IMG-20250705-WA0021.jpg">
+      <source src="DavidWebBack.mp4" type="video/mp4">
+      <img src="IMG-20250705-WA0021.jpg" alt="Fallback Image">
     </video>
     <div class="hero-content">
       <h1>David Ivanyuck</h1>
@@ -20,38 +20,37 @@
   </section>
 
   <!-- Featured Film Section -->
-  <section class="featured fade-in">
+  <section class="featured">
     <div class="featured-text">
       <h2>Why Do I Make Films?</h2>
       <p>
         I challenged myself to create something that I was going to be proud of for the rest of my life. 
-        This film is that, even though there is no groundbreaking cinematography and lighting. 
-        This film goes deep into my filmmaking struggles, and my life as an artist.
-      </p>
-      <p>
-        Please watch this in one sitting, taking breaks will ruin the film. 
-        This is by far the most tasking, and hardest thing I have ever done. 
-        I really enjoyed making this, and I hope you enjoyed it as well.
+        This film is that, even though there is no groundbreaking cinematography or lighting. 
+        It dives deep into my filmmaking struggles and my life as an artist.<br><br>
+        Please watch this in one sitting — taking breaks will ruin the film. 
+        This is by far the most tasking and hardest thing I have ever done. 
+        I really enjoyed making this, and I hope you enjoy it as well.
       </p>
     </div>
     <div class="featured-video">
-      <iframe src="https://www.youtube.com/embed/0en2aZywbXM?si=BjIOPw_Yi-g7MH70" 
-              title="Why Do I Make Films?" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen></iframe>
+      <iframe width="560" height="315" 
+        src="https://www.youtube.com/embed/0en2aZywbXM?si=BjIOPw_Yi-g7MH70" 
+        title="YouTube video player" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
     </div>
   </section>
 
   <!-- Gallery Section -->
-  <section class="gallery fade-in">
+  <section class="gallery">
     <img src="IMG-20250705-WA0021.jpg" alt="Gallery Image 1">
     <img src="IMG-20250705-WA0020.jpg" alt="Gallery Image 2">
     <img src="IMG-20250705-WA0019.jpg" alt="Gallery Image 3">
   </section>
 
   <!-- Contact Section -->
-  <section class="contact fade-in">
+  <section class="contact">
     <h2>Contact</h2>
     <p>
       For brand inquiries reach out to<br>
@@ -63,27 +62,5 @@
   <footer>
     ©DavidIvanyuck2025
   </footer>
-
-  <!-- Scroll Animation Script -->
-  <script>
-    const faders = document.querySelectorAll('.fade-in');
-
-    const appearOptions = {
-      threshold: 0.2,
-      rootMargin: "0px 0px -50px 0px"
-    };
-
-    const appearOnScroll = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('show');
-        observer.unobserve(entry.target);
-      });
-    }, appearOptions);
-
-    faders.forEach(fader => {
-      appearOnScroll.observe(fader);
-    });
-  </script>
 </body>
 </html>
