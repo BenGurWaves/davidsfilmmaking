@@ -8,6 +8,7 @@ body {
   font-family: Arial, sans-serif;
   background-color: #000;
   color: white;
+  text-align: center; /* default center so sections don't collapse left */
 }
 
 /* Hero Section */
@@ -56,7 +57,7 @@ body {
   justify-content: space-between;
   padding: 60px 10%;
   background: #000;
-  text-align: left;
+  text-align: left; /* only this section is left-aligned */
 }
 .featured-text {
   flex: 1 1 45%;
@@ -81,7 +82,7 @@ body {
 @media (max-width: 768px) {
   .featured {
     flex-direction: column;
-    text-align: center;
+    text-align: center; /* mobile: center again */
   }
   .featured-text {
     padding-right: 0;
