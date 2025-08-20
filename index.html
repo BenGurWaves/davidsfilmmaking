@@ -15,6 +15,7 @@
       background-color: #000;
       color: white;
     }
+
     /* Hero Section */
     .hero {
       position: relative;
@@ -30,10 +31,11 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      min-width: 100%;
-      min-height: 100%;
+      width: 100%;
+      height: 100%;
       transform: translate(-50%, -50%);
-      object-fit: cover;
+      object-fit: contain; /* Show full video, no zoom crop */
+      background-color: #000; /* fills edges if aspect ratio doesn't match */
       z-index: -1;
     }
     .hero-content {
@@ -52,6 +54,7 @@
     .contact {
       font-size: 1rem;
     }
+
     /* Featured Section */
     .featured {
       display: flex;
@@ -59,7 +62,8 @@
       align-items: center;
       justify-content: space-between;
       padding: 60px 10%;
-      background-color: #000;
+      background: #000;
+      text-align: left;
     }
     .featured-text {
       flex: 1 1 45%;
@@ -84,6 +88,7 @@
     @media (max-width: 768px) {
       .featured {
         flex-direction: column;
+        text-align: center;
       }
       .featured-text {
         padding-right: 0;
@@ -99,7 +104,6 @@
   <!-- Hero Section -->
   <section class="hero">
     <video autoplay muted loop playsinline>
-      <!-- Your uploaded GitHub video file -->
       <source src="David Web Back.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -127,7 +131,7 @@
       </p>
     </div>
     <div class="featured-video">
-      <iframe src="https://www.youtube.com/embed/0en2aZywbXM" 
+      <iframe src="https://www.youtube.com/embed/0en2aZywbXM"
               title="Why Do I Make Films?" 
               allowfullscreen>
       </iframe>
@@ -135,3 +139,4 @@
   </section>
 </body>
 </html>
+
