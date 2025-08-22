@@ -1,80 +1,116 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Information - David Ivanyuck</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Information — David Ivanyuck</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <div class="info-page">
 
-    <!-- LEFT FLOATING WORD -->
-    <div class="info-nav">
-      <span class="active">Bio</span>
-      <span>Contact</span>
-      <span>Archive</span>
+    <!-- LEFT floating label (single element, text swapped by JS) -->
+    <div class="left-label" aria-hidden="true">
+      <span id="leftLabel" class="label-text"></span>
     </div>
 
-    <!-- MAIN CONTENT CENTER -->
-    <div class="info-content">
-      <section id="bio">
-        <h2>Bio</h2>
-        <p>
-          I am David Ivanyuck, a filmmaker and visual artist whose work straddles the line 
-          between experimental cinema and narrative storytelling. My approach is rooted in 
-          texture, rhythm, and emotion rather than linear progression. Every frame is crafted 
-          as if it could stand alone as a photograph, while together they form an audiovisual 
-          poem. 
-        </p>
-        <p>
-          My journey began not in film school, but through late nights experimenting with 
-          cameras, editing, and projection. This autodidact path gave me a unique visual 
-          language—one that embraces imperfection, noise, and grain as living, breathing 
-          elements in storytelling. 
-        </p>
-        <p>
-          Today, I collaborate with musicians, brands, and other artists to create work that 
-          moves fluidly between commercial and personal, digital and analog, chaos and order. 
-        </p>
+    <!-- RIGHT / MAIN SCROLL CONTENT -->
+    <main class="main-content">
+
+      <!-- BIG intro / spam block so user has to scroll to reach Bio -->
+      <section id="intro" class="page-section section--intro" data-title="">
+        <div class="section-inner">
+          <h1 class="intro-emoji">.</h1>
+          <p class="intro-spam">
+            <!-- spam dots to force scrolling -->
+            ..............................................................................................................................
+            ..............................................................................................................................
+            ..............................................................................................................................
+            ..............................................................................................................................
+            ..............................................................................................................................
+            ..............................................................................................................................
+            ..............................................................................................................................
+            ..............................................................................................................................
+            ..............................................................................................................................
+            ..............................................................................................................................
+            ..............................................................................................................................
+          </p>
+        </div>
       </section>
 
-      <section id="contact">
-        <h2>Contact</h2>
-        <p>
-          Interested in collaboration, commissions, or just a conversation? I’m always open 
-          to connecting with creatives who share a love for film, photography, or experimental 
-          media. Whether it’s a brand campaign, music video, or an independent art project, 
-          I’d love to hear your ideas.
-        </p>
-        <p>
-          Please reach out via email at <a href="mailto:contact@davidivanyuck.com">contact@davidivanyuck.com</a>.  
-          You can also find me sharing fragments, works-in-progress, and inspiration across 
-          social platforms like Instagram and Vimeo.
-        </p>
-        <p>
-          Let’s build something that challenges, disturbs, and inspires.
-        </p>
+      <!-- BIO -->
+      <section id="bio" class="page-section" data-title="Bio">
+        <div class="section-inner">
+          <h2>Bio</h2>
+
+          <p>
+            I am David Ivanyuck, a filmmaker and visual artist whose work straddles the line between experimental cinema and quiet narrative. My approach values texture and rhythm over tidy exposition; I aim to build frames that carry the weight of lived moments while still breathing like a piece of music. I treat the image as a place to keep memory and doubt in parallel — to let them sit in the same frame and watch what happens.
+          </p>
+
+          <p>
+            My earliest work began in the margins: late-night experiments with found footage, phone camera tests, and small edits that taught me how to listen to images. Without formal textbooks dictating procedure, I learned by breaking things. Those mistakes are visible in the films I make — grain, stray light, and half-heard audio that together feel more human than anything polished to perfection.
+          </p>
+
+          <p>
+            Collaboration has been my greatest teacher. Working with musicians, designers, and other filmmakers has sharpened my sense of timing and given me permission to be messy. I don’t make movies to impress; I make them to understand. Each piece is a conversation with a moment in time — a way to hold certain questions without pretending to have answers.
+          </p>
+
+          <p>
+            The work is often slow, sometimes brutal, and occasionally tender. It’s not a portfolio of hits; it’s a map of attempts. I keep making because the act of making changes how I recognize possibility. That hunger, more than praise or numbers, is what keeps me filming.
+          </p>
+        </div>
       </section>
 
-      <section id="archive">
-        <h2>Archive</h2>
-        <p>
-          My archive is a living organism—short films, visual studies, personal experiments, 
-          and commissioned work all coexisting in dialogue. It is less of a gallery and more 
-          of a diary: a place where polished projects meet raw sketches. 
-        </p>
-        <p>
-          Each piece is part of a continuum. Sometimes I revisit old footage years later, 
-          cutting it into new shapes, layering it with different sounds, or projecting it 
-          onto unconventional surfaces. The archive is where I experiment freely, unbound by 
-          deadlines or expectations. 
-        </p>
-        <p>
-          Think of it as a sandbox—messy, alive, and constantly shifting.
-        </p>
+      <!-- CONTACT -->
+      <section id="contact" class="page-section" data-title="Contact">
+        <div class="section-inner">
+          <h2>Contact</h2>
+
+          <p>
+            For collaborations, commissions, or conversation: I prefer focused, intentional contact. If you’d like to talk about a project — anything from a concept-stage music film to a longer experimental piece — email is the clearest place to start.
+          </p>
+
+          <p>
+            <strong>Email:</strong> <a href="mailto:dfilmmaking@gmail.com">dfilmmaking@gmail.com</a>
+          </p>
+
+          <p>
+            I work best with people who bring clarity of purpose and a tolerance for risk. That could mean a small budget and big ambition, or a long timeline and an unknown result. I’m open to travel for projects that need it, and I’m careful about what I say yes to — because time is the real budget.
+          </p>
+
+          <p>
+            For quick glimpses of my process, work-in-progress clips, and visual notes, social channels are useful — but email remains the most reliable channel for real conversations.
+          </p>
+        </div>
       </section>
-    </div>
+
+      <!-- ARCHIVE -->
+      <section id="archive" class="page-section" data-title="Archive">
+        <div class="section-inner">
+          <h2>Archive</h2>
+
+          <p>
+            The archive is a living pile: early experiments, rough cuts, outtakes, collages, sound tests, and pieces that exist only as notes. It is not curated to feel “finished”; rather, it is a place to return to, rework, and reimagine. Some pieces remain as fragments because they are useful fragments.
+          </p>
+
+          <p>
+            Over the years, I’ve learned to value process over prestige. Projects that were once abandoned often reappear as the seed for something new. The archive keeps those seeds — raw footage, audio scraps, and half-built edits — precisely because they remind me how the work is made.
+          </p>
+
+          <p>
+            If you’d like to see specific archive material, reach out; certain items are available for viewings or conversation. The archive is an invitation to see the artist as a maker of attempts, not only polished outputs.
+          </p>
+        </div>
+      </section>
+
+      <!-- final spacer so footer isn't jammed -->
+      <section class="page-section section--end" data-title="">
+        <div class="section-inner">
+          <p style="opacity:.5; text-align:center;">End of page — thanks for scrolling.</p>
+        </div>
+      </section>
+    </main>
   </div>
 
   <script src="info.js"></script>
