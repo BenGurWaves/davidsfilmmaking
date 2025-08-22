@@ -223,3 +223,123 @@ footer {
     color: #ffcc00;
   }
 }
+
+/* =========================
+   ADDITIONS / OVERRIDES
+   for synced left-label behavior
+   (keeps everything above unchanged)
+   ========================= */
+
+/* Provide a separate left-label style that the latest info.js expects.
+   We don't remove .info-nav (keeps compatibility with prior HTML), but
+   add .left-label / .label-text so the more advanced synced JS can use it.
+   These rules are additive and safe — they'll only take effect on pages
+   that include .left-label in the markup. */
+
+/* CSS variables for easy tweaks */
+:root {
+  --left-offset: 60px;
+  --label-size: 4.2rem;
+  --label-color: #ffffff;
+  --muted-color: #555555;
+}
+
+/* Left-label container (fixed, sits on the left) */
+.left-label {
+  position: fixed;
+  left: var(--left-offset);
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 999;
+  width: 28vw;
+  max-width: 360px;
+}
+
+/* The label text element: initial hidden / offscreen state.
+   JS will set .visible and will drive inline translateY for fine sync. */
+.label-text {
+  display: block;
+  font-weight: 800;
+  font-size: var(--label-size);
+  line-height: 1;
+  color: var(--label-color);
+  will-change: transform, opacity;
+  white-space: nowrap;
+  letter-spacing: -2px;
+  opacity: 0;
+  transform: translateY(40vh);
+  transition: opacity 0.25s ease;
+}
+
+/* visible modifier toggled by JS */
+.label-text.visible {
+  opacity: 1;
+}
+
+/* Ensure readability at large widths */
+@media (min-width: 1600px) {
+  .left-label { max-width: 420px; }
+  .label-text { font-size: calc(var(--label-size) * 1.08); }
+}
+
+/* Add left-space for info-content only on the information page so content doesn't sit under label.
+   We use a safe selector so other pages stay unaffected. */
+.info-page .info-content {
+  /* push content away from fixed label — preserves original layout but avoids overlap */
+  padding-left: calc(var(--left-offset) + 12vw);
+  box-sizing: border-box;
+}
+
+/* On small screens remove added left padding so content can use full width */
+@media (max-width: 880px) {
+  .info-page .info-content {
+    padding-left: 0;
+    padding-right: 20px;
+  }
+}
+
+/* Fine-tune the centered block behavior so paragraphs remain visually centered
+   while still using the existing .info-content section rules */
+.info-page .info-content section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6vh 4vw;   /* breathing room */
+}
+
+/* Keep paragraph max width readable */
+.info-page .info-content .section-inner,
+.info-page .info-content .content-block {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Accessibility: ensure focus outlines for links inside info sections */
+.info-page .info-content a:focus {
+  outline: 2px dashed #ffcc00;
+  outline-offset: 4px;
+}
+
+/* Hide left-label on very small screens to avoid layout crowding */
+@media (max-width: 600px) {
+  .left-label { display: none; }
+}
+
+/* If old .info-nav is used elsewhere, these rules remain as-is above.
+   We added the .left-label system to be used by the latest info.js — safe fallback. */
+
+/* Small tweak for the intro spam section if present */
+.section--intro .intro-spam {
+  font-size: 18px;
+  line-height: 1.2;
+  color: #222;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* final spacer visuals */
+.section--end p {
+  color: rgba(255,255,255,0.6);
+}
