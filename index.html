@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -10,10 +10,10 @@
 
   <!-- HERO SECTION -->
   <header class="hero">
-    <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="IMG-20250705-WA0021.jpg">
+    <video autoplay muted loop playsinline preload="auto" poster="IMG-20250705-WA0021.jpg">
       <source src="DavBakGrain.mp4" type="video/mp4">
-      <!-- fallback -->
-      <img src="IMG-20250705-WA0021.jpg" alt="David Ivanyuck background">
+      <!-- fallback image for very old browsers -->
+      <img src="IMG-20250705-WA0021.jpg" alt="Background fallback">
     </video>
 
     <nav class="top-nav">
@@ -42,21 +42,22 @@
     </div>
 
     <div class="featured-video">
-      <!-- keep the YouTube embed or replace with self-hosted <video> as you prefer -->
-      <iframe width="560" height="315"
-        src="https://www.youtube.com/embed/0en2aZywbXM?si=BjIOPw_Yi-g7MH70"
-        title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+      <!-- self-hosted video (ad-free) -->
+      <video controls preload="metadata" poster="IMG-20250705-WA0021.jpg">
+        <source src="WhyDoIMakeFilms.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     </div>
   </section>
 
-  <!-- GALLERY -->
+  <!-- GALLERY SECTION -->
   <section class="gallery">
     <img src="IMG-20250705-WA0021.jpg" alt="Gallery 1">
     <img src="IMG-20250705-WA0020.jpg" alt="Gallery 2">
     <img src="IMG-20250705-WA0019.jpg" alt="Gallery 3">
   </section>
 
-  <!-- CONTACT -->
+  <!-- CONTACT SECTION -->
   <section class="contact">
     <h2>Contact</h2>
     <p>For brand inquiries reach out to<br>
