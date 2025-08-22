@@ -133,65 +133,68 @@ footer {
 /* ---------- INFORMATION PAGE ---------- */
 .info-page {
   display: flex;
-  min-height: 100vh;
   background: #000;
   color: #fff;
 }
 
-/* LEFT COLUMN (animated labels, centered vertically) */
+/* LEFT BIG WORD */
 .info-nav {
-  position: sticky;
-  top: 0;
-  width: 25%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;  /* vertically center */
-  align-items: center;
-  font-size: 3rem;
+  position: fixed;
+  top: 50%;
+  left: 60px;
+  transform: translateY(-50%);
+  font-size: 4rem;
   font-weight: bold;
-  letter-spacing: -1px;
+  letter-spacing: -2px;
+  pointer-events: none; /* don’t block scroll */
 }
 
 .info-nav span {
+  display: block;
   opacity: 0;
-  position: absolute;
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
   color: #444;
-  transform: translateY(20px);
+  position: absolute;
 }
 
 .info-nav span.active {
   opacity: 1;
-  color: #fff;
   transform: translateY(0);
+  color: #fff;
 }
 
-/* RIGHT SIDE CONTENT */
+/* CENTER CONTENT */
 .info-content {
-  width: 75%;
-  padding: 100px 80px;
-  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .info-content section {
-  margin-bottom: 120vh; /* keeps sections tall for scrolling */
+  min-height: 100vh;  /* full screen */
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical center */
+  text-align: center;      /* horizontal center */
+  padding: 0 20px;
 }
 
 .info-content h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #ffcc00;
+  display: none; /* hidden since left word is the marker */
 }
 
 .info-content p {
-  margin-bottom: 30px;
-  font-size: 1.1rem;
-  line-height: 1.8;
+  margin-bottom: 25px;
+  font-size: 1.2rem;
+  line-height: 1.9;
   color: #ddd;
   text-align: justify;
 }
 
-/* ---------- MOBILE ---------- */
+/* MOBILE */
 @media (max-width: 768px) {
   .featured {
     flex-direction: column;
@@ -205,20 +208,18 @@ footer {
     width: 80%;
   }
 
-  .info-page {
-    flex-direction: column;
-  }
-
   .info-nav {
-    position: relative;
-    width: 100%;
-    height: auto;
-    padding: 20px;
-    text-align: center;
+    display: none; /* hide left floating nav on mobile */
   }
 
-  .info-content {
-    width: 100%;
-    padding: 20px;
+  .info-content section {
+    text-align: left;
+    padding: 60px 20px;
+  }
+
+  .info-content h2 {
+    display: block;
+    margin-bottom: 20px;
+    color: #ffcc00;
   }
 }
