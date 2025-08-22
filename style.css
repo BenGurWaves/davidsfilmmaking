@@ -134,53 +134,61 @@ footer {
 .info-page {
   display: flex;
   min-height: 100vh;
+  background: #000;
+  color: #fff;
 }
 
-/* LEFT COLUMN (animated labels) */
+/* LEFT COLUMN (animated labels, centered vertically) */
 .info-nav {
   position: sticky;
   top: 0;
   width: 25%;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: center;  /* vertically center */
   align-items: center;
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: bold;
+  letter-spacing: -1px;
 }
 
 .info-nav span {
   opacity: 0;
   position: absolute;
-  transition: opacity 0.8s ease;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  color: #444;
+  transform: translateY(20px);
 }
 
 .info-nav span.active {
   opacity: 1;
+  color: #fff;
+  transform: translateY(0);
 }
 
-/* RIGHT CONTENT */
+/* RIGHT SIDE CONTENT */
 .info-content {
   width: 75%;
-  padding: 60px;
-  background: #111;
-  overflow: auto;
+  padding: 100px 80px;
+  max-width: 900px;
 }
 
 .info-content section {
-  margin-bottom: 200px;
+  margin-bottom: 120vh; /* keeps sections tall for scrolling */
 }
 
 .info-content h2 {
+  font-size: 2rem;
   margin-bottom: 20px;
-  font-size: 24px;
   color: #ffcc00;
 }
 
 .info-content p {
-  margin-bottom: 20px;
-  font-size: 16px;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+  line-height: 1.8;
   color: #ddd;
+  text-align: justify;
 }
 
 /* ---------- MOBILE ---------- */
@@ -213,65 +221,4 @@ footer {
     width: 100%;
     padding: 20px;
   }
-}
-/* ---------- INFORMATION PAGE ---------- */
-.info-page {
-  display: flex;
-  min-height: 100vh;
-  background: #000;
-  color: #fff;
-}
-
-/* LEFT COLUMN (big labels) */
-.info-nav {
-  position: sticky;
-  top: 0;
-  width: 25%;
-  height: 100vh;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  flex-direction: column;
-  padding: 40px 20px;
-  font-size: 3rem;
-  font-weight: bold;
-  letter-spacing: -1px;
-}
-
-.info-nav span {
-  opacity: 0;
-  position: absolute;
-  left: 40px;
-  transition: opacity 0.6s ease;
-  color: #444;
-}
-
-.info-nav span.active {
-  opacity: 1;
-  color: #fff;
-}
-
-/* RIGHT SIDE CONTENT */
-.info-content {
-  width: 75%;
-  padding: 100px 80px;
-  max-width: 900px;
-}
-
-.info-content section {
-  margin-bottom: 200px;
-}
-
-.info-content h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #ffcc00;
-}
-
-.info-content p {
-  margin-bottom: 30px;
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #ddd;
-  text-align: justify;
 }
