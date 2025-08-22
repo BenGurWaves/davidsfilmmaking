@@ -1,28 +1,16 @@
-/* ==========================================================================
-   style.css — Full file (drop this in to replace)
-   - Preserves site-wide rules (hero, featured, gallery, contact, footer)
-   - Keeps legacy .info-nav rules for fallback compatibility
-   - Adds .left-label / .label-text system for scroll-synced left label
-   - Adds responsive fallbacks and accessibility touches
-   ========================================================================== */
+/* ================================
+   style.css — Full file (replace)
+   Hero video centered & zoomed to avoid black bars
+   ================================ */
 
-/* =========================
-   RESET
-   ========================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ==========================================================================
-   GLOBAL BASE
-   ========================================================================== */
-:root {
-  /* Layout tuning variables (feel free to tweak) */
-  --left-offset: 60px;          /* left label distance from left edge */
-  --left-width-vw: 28vw;        /* left label max width area */
-  --label-font: 4.2rem;         /* left label font size */
+/* Root variables */
+:root{
+  --left-offset: 60px;
+  --left-width-vw: 28vw;
+  --label-font: 4.2rem;
   --label-color: #ffffff;
   --muted-color: #555555;
   --accent: #ffcc00;
@@ -31,12 +19,9 @@
   --section-bg-dark: #111;
 }
 
-/* Basic page */
-html, body {
-  height: 100%;
-}
-
-body {
+/* Base */
+html,body{ height:100%; }
+body{
   font-family: Arial, Helvetica, sans-serif;
   background: var(--site-bg);
   color: #fff;
@@ -46,472 +31,203 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* link base */
-a {
-  color: inherit;
-  text-decoration: underline;
-}
-
-/* Accessibility focus state for keyboard users */
-:focus {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-}
-
-/* ==========================================================================
-   HERO SECTION
-   ========================================================================== */
-.hero {
+/* HERO SECTION */
+.hero{
   position: relative;
+  width: 100%;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
 }
 
-/* Video backgrounds */
-.hero video {
+/* VIDEO: center and crop, slight scale for zoom */
+.hero video{
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.06); /* tweak scale for more/less zoom */
   min-width: 100%;
   min-height: 100%;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: auto;
+  height: auto;
   z-index: -1;
+  object-fit: none; /* we're using transform centering, not object-fit */
   background: #000;
 }
 
-/* fallback image inside <video> (browser will show poster or inner <img>) */
-.hero img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
+/* Fallback img (inside video) */
+.hero img{ display: none; }
 
-/* Top navigation / small info button in top-right */
-.top-nav {
+/* small overlay / nav */
+.top-nav{
   position: absolute;
   top: 20px;
   right: 20px;
-  z-index: 60;
+  z-index: 40;
 }
 
-/* the small 'Information' button */
-.top-nav .info-btn {
+.top-nav .info-btn{
   text-decoration: none;
   font-size: 14px;
-  background: rgba(255, 255, 255, 0.08);
-  color: white;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
   padding: 8px 14px;
   border-radius: 20px;
-  transition: background 0.25s ease, transform 0.12s ease;
   border: 1px solid rgba(255,255,255,0.08);
-  display: inline-block;
+  transition: background .2s ease, transform .12s ease;
 }
 
-.top-nav .info-btn:hover,
-.top-nav .info-btn:focus {
-  background: rgba(255, 255, 255, 0.95);
+.top-nav .info-btn:hover{
+  background: rgba(255,255,255,0.95);
   color: #000;
   transform: translateY(-2px);
 }
 
-/* Hero content centered */
-.hero-content {
+/* Hero text */
+.hero-content{
   z-index: 20;
-  max-width: 680px;
+  max-width: 720px;
   padding: 20px;
 }
 
-.hero-content h1 {
+.hero-content h1{
   font-size: 3rem;
-  line-height: 1.05;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
-.hero-content p {
-  font-size: 1.1rem;
+.hero-content p{
+  font-size: 1.25rem;
   opacity: 0.95;
 }
 
-/* ==========================================================================
-   FEATURED / VIDEO SECTION
-   ========================================================================== */
-.featured {
+/* FEATURED SECTION */
+.featured{
   display: flex;
-  justify-content: space-between;
+  gap: 40px;
   align-items: center;
+  justify-content: space-between;
   background: var(--site-bg);
   padding: 80px 10%;
   min-height: 100vh;
-  gap: 40px;
+  box-sizing: border-box;
 }
 
-.featured-text { flex: 1; }
-.featured-video { flex: 1; }
+.featured-text{ flex:1; max-width: 55%; }
+.featured-video{ flex:1; max-width: 40%; text-align:center; }
 
-/* If embedding a YouTube iframe or <video> */
 .featured-video iframe,
-.featured-video video {
-  width: 100%;
-  height: 100%;
-  max-height: 500px;
+.featured-video video{
+  width:100%;
   border-radius: 8px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
 }
 
-/* Featured headings */
-.featured-text h2 {
-  font-size: 2rem;
-  margin-bottom: 18px;
-}
-
-/* text paragraphs inside featured section */
-.featured-text p {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: #ddd;
-}
-
-/* ==========================================================================
-   GALLERY
-   ========================================================================== */
-.gallery {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  padding: 80px 10%;
+/* GALLERY */
+.gallery{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  padding:80px 10%;
   background: var(--section-bg-dark);
-  flex-wrap: wrap;
+  flex-wrap:wrap;
 }
 
-/* image cards */
-.gallery img {
-  width: 30%;
-  max-width: 360px;
-  border-radius: 8px;
-  object-fit: cover;
+.gallery img{
+  width:30%;
+  max-width:360px;
+  border-radius:8px;
+  object-fit:cover;
   box-shadow: 0 8px 30px rgba(0,0,0,0.5);
   transition: transform .25s ease, box-shadow .25s ease;
 }
 
-/* slight hover lift */
-.gallery img:hover,
-.gallery img:focus {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.6);
-}
+.gallery img:hover{ transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,0.6); }
 
-/* small screens gallery -> column */
-@media (max-width: 768px) {
-  .gallery img { width: 80%; max-width: none; }
-}
-
-/* ==========================================================================
-   CONTACT SECTION
-   ========================================================================== */
-.contact {
-  padding: 100px 10%;
+/* CONTACT */
+.contact{
+  padding:100px 10%;
   background: var(--section-bg-dark);
-  text-align: center;
+  text-align:center;
 }
 
-.contact h2 {
-  font-size: 2rem;
-  margin-bottom: 16px;
-  color: var(--accent);
-}
+.contact h2{ font-size:2rem; margin-bottom:16px; color: var(--accent); }
+.contact a{ color: var(--accent); text-decoration: none; font-weight:600; }
+.contact a:hover{ text-decoration: underline; }
 
-.contact p {
-  font-size: 1.1rem;
-}
-
-/* link style in contact */
-.contact a {
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.contact a:hover,
-.contact a:focus { text-decoration: underline; }
-
-/* ==========================================================================
-   FOOTER
-   ========================================================================== */
-footer {
+/* FOOTER */
+footer{
   background: #000;
   padding: 20px;
-  text-align: center;
-  font-size: 14px;
-  color: #777;
+  text-align:center;
+  font-size:14px;
+  color:#777;
 }
 
-/* ==========================================================================
-   INFORMATION / INFO PAGE — LEGACY + NEW
-   - Keep old .info-nav in place (fallback)
-   - Add new .left-label / .label-text system (preferred for new JS)
-   - Ensure centered paragraphs in sections (both horiz + vert)
-   ========================================================================== */
+/* INFO PAGE RELATED (kept here for consistency) */
+.info-page .info-nav { display:none !important; } /* keep legacy hidden if left-label used */
 
-/* Legacy .info-nav (kept for compatibility; hidden when left-label is active) */
-.info-nav {
-  position: fixed;
-  top: 50%;
-  left: 60px;
-  transform: translateY(-50%);
-  font-size: 4rem;
-  font-weight: bold;
-  letter-spacing: -2px;
-  pointer-events: none;
-  z-index: 900;
-}
-
-/* legacy spans */
-.info-nav span {
-  opacity: 0;
-  position: absolute;
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  transform: translateY(40px);
-  color: #444;
-}
-
-.info-nav span.active {
-  opacity: 1;
-  transform: translateY(0);
-  color: #fff;
-}
-
-/* -----------------------------
-   New left-label system (preferred)
-   ----------------------------- */
-
-/* left-label container (position: fixed so it stays visible) */
-.left-label {
-  position: fixed;
-  left: var(--left-offset);
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  z-index: 1000;
-  width: var(--left-width-vw);
-  max-width: 520px;
-}
-
-/* label text (JS will set inline translateY and toggle class .visible) */
-.label-text,
-#leftLabel {
-  display: block;
-  font-weight: 800;
-  font-size: var(--label-font);
-  line-height: 1;
-  color: var(--label-color);
-  white-space: nowrap;
-  letter-spacing: -2px;
-  will-change: transform, opacity;
-  opacity: 0; /* until JS toggles visible */
-  transform: translateY(40vh); /* initial offscreen */
-  transition: none; /* we rely on direct transform updates from JS */
-  text-transform: none;
-}
-
-/* visible class toggles opacity on/off instantly (no fade) */
-.label-text.visible,
-#leftLabel.visible {
-  opacity: 1;
-}
-
-/* Responsive: hide left-label on small screens */
-@media (max-width: 880px) {
-  .left-label { display: none; }
-  .info-nav { display: none; } /* legacy fallback too */
-}
-
-/* -----------------------------
-   Main content spacing so label doesn't overlap
-   ----------------------------- */
-
-/* The main content containers (pages that use left-label) should push right */
+/* generic main/content spacing (compat) */
 .main-content, .info-content {
   padding-left: calc(var(--left-offset) + var(--left-width-vw) * 0.32);
   box-sizing: border-box;
 }
 
-/* small screens: remove extra left padding */
-@media (max-width: 880px) {
-  .main-content, .info-content {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
+/* PAGE SECTIONS: center the blocks vertically/horizontally */
+.page-section, .info-content section {
+  min-height: 100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:6vh 4vw;
+  box-sizing:border-box;
 }
 
-/* ==========================================================================
-   SECTION / PAGE-SECTION LAYOUT — full height centered blocks
-   - Each .page-section fills the viewport so the label can sync.
-   - Inner content (.section-inner or .content-block) controls max width.
-   ========================================================================== */
-
-.page-section,
-.info-content section {
-  min-height: 100vh; /* full-screen vertical block */
-  display: flex;
-  align-items: center;    /* vertical center inside viewport */
-  justify-content: center; /* center horizontally within block */
-  padding: 6vh 4vw;
-  box-sizing: border-box;
-}
-
-/* inner wrapper width and centering */
-.section-inner,
-.content-block {
-  width: 100%;
+.section-inner, .content-block {
+  width:100%;
   max-width: var(--max-content-width);
   margin: 0 auto;
-  text-align: center; /* center horizontally the paragraphs */
+  text-align: center;
 }
 
-/* headings hidden on wide screens because left-label acts as header */
-.page-section h2,
-.info-content h2 {
-  display: none;
-}
-
-/* paragraph styles for info sections — centered block but text justified */
-.section-inner p,
-.content-block p,
-.info-content p {
+.section-inner p, .content-block p, .info-content p {
   font-size: 1.15rem;
   line-height: 1.9;
   color: #ddd;
   margin-bottom: 1.4rem;
-  text-align: justify;  /* readable justification inside centered block */
-  max-width: 72ch;      /* readable measure */
+  text-align: justify;
+  max-width: 72ch;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* Intro spam specific (keeps the dots subtle) */
-.section--intro .intro-spam {
-  color: #222;
-  font-size: 18px;
-  line-height: 1.2;
-  text-align: center;
-  max-width: 1000px;
-}
-
-/* end section style */
-.section--end p {
-  color: rgba(255,255,255,0.6);
-  text-align: center;
-}
-
-/* ==========================================================================
-   Accessibility + small polish
-   ========================================================================== */
-
-/* Focus visible for links in the content */
-.section-inner a:focus,
-.info-content a:focus {
-  outline: 2px dashed var(--accent);
-  outline-offset: 4px;
-}
-
-/* subtle image captions (if needed) */
-.caption {
-  font-size: 0.9rem;
-  color: #bbb;
-  margin-top: 8px;
-}
-
-/* ==========================================================================
-   LEGACY BACKWARDS COMPAT (do not remove)
-   keep older selectors present so previous pages remain unchanged
-   ========================================================================== */
-
-/* Provide a fallback for .info-nav if it ever appears in markup
-   (keeps legacy behavior intact) */
-.info-nav span { opacity: 0; position: absolute; color: #444; transform: translateY(40px); transition: all 0.6s ease; }
-.info-nav span.active { opacity: 1; color: #fff; transform: translateY(0); }
-
-/* ==========================================================================
-   RESPONSIVE RULES
-   ========================================================================== */
-
-/* Tablet / mid screens */
+/* responsive tweaks */
 @media (max-width: 1024px) {
-  .featured {
-    padding: 60px 6%;
-  }
-  .featured-video iframe {
-    height: 380px;
-  }
-  .gallery {
-    padding: 60px 6%;
-  }
+  .featured { padding: 60px 6%; gap: 28px; }
+  .featured-video iframe { height: 380px; }
 }
 
-/* Mobile narrow screens */
-@media (max-width: 768px) {
-  /* hero text sizing */
-  .hero-content h1 { font-size: 2rem; }
-  .hero-content p { font-size: 1rem; }
+@media (max-width: 880px) {
+  /* on narrow screens drop the left offset so content is full width */
+  .main-content, .info-content { padding-left: 20px; padding-right: 20px; }
 
-  .featured { flex-direction: column; padding: 40px 5%; min-height: auto; }
-  .featured-text { margin-bottom: 20px; }
-  .featured-video iframe { height: 220px; }
+  /* hero video: avoid heavy scale on small screens */
+  .hero video { transform: translate(-50%, -50%) scale(1.02); }
 
-  .gallery { flex-direction: column; gap: 16px; }
-  .gallery img { width: 80%; max-width: none; }
-
-  .contact { padding: 60px 5%; }
-
-  /* Info page becomes stacked: left label removed, headings shown inside sections */
-  .left-label { display: none; }
-  .info-nav { display: none; }
-
-  .page-section h2,
-  .info-content h2 {
-    display: block;
-    color: var(--accent);
-    text-align: left;
-    margin-bottom: 14px;
-    font-size: 1.4rem;
-  }
-
-  .section-inner p,
-  .info-content p {
-    text-align: left;
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-
-  .main-content, .info-content {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
+  .gallery img { width: 80%; }
+  .featured { flex-direction: column; min-height: auto; padding: 40px 5%; }
+  .featured-text { max-width: 100%; }
+  .featured-video { max-width: 100%; }
 }
 
-/* Large screens adjustments */
+/* Large screens */
 @media (min-width: 1600px) {
   :root { --label-font: 5.2rem; --left-width-vw: 22vw; }
-  .left-label { max-width: 520px; }
   .hero-content { max-width: 900px; }
 }
 
-/* ==========================================================================
-   TINY UTILITIES (handy for quick tweaks)
-   ========================================================================== */
-
-.u-hidden { display: none !important; }
-.u-center { margin-left: auto; margin-right: auto; text-align: center; }
+/* utility */
+.u-center { margin-left:auto; margin-right:auto; text-align:center; }
 .u-muted { color: var(--muted-color); }
-
-/* ==========================================================================
-   END OF FILE
-   ========================================================================== */
