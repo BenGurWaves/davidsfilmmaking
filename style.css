@@ -5,18 +5,24 @@
   box-sizing: border-box;
 }
 
+/* General */
 body {
   font-family: Arial, Helvetica, sans-serif;
-  color: #fff;
   background: #000;
+  color: #fff;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 /* HERO SECTION */
 .hero {
   position: relative;
-  width: 100%;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
   overflow: hidden;
 }
 
@@ -30,141 +36,181 @@ body {
   z-index: -1;
 }
 
-.hero-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.hero-content h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
-}
-
-.hero-content p {
-  font-size: 1.25rem;
-}
-
-/* TOP NAVIGATION BUTTON */
 .top-nav {
   position: absolute;
   top: 20px;
-  right: 30px;
+  right: 20px;
 }
 
-.info-btn {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid #fff;
-  padding: 8px 16px;
-  border-radius: 20px;
-  color: #fff;
+.top-nav .info-btn {
   text-decoration: none;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background 0.3s;
 }
 
-.info-btn:hover {
-  background: #fff;
-  color: #000;
+.top-nav .info-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.hero-content {
+  max-width: 600px;
+  padding: 20px;
 }
 
 /* FEATURED SECTION */
 .featured {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
   justify-content: space-between;
-  background: #000;
-  padding: 60px 10%;
+  align-items: center;
+  background: black;
+  padding: 80px 10%;
   min-height: 100vh;
+  gap: 40px;
 }
 
 .featured-text {
   flex: 1;
-  min-width: 280px;
-  margin-right: 20px;
-}
-
-.featured h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-.featured p {
-  font-size: 1rem;
 }
 
 .featured-video {
   flex: 1;
-  min-width: 300px;
-  text-align: center;
+}
+
+.featured-video video {
+  width: 100%;
+  border-radius: 8px;
 }
 
 /* GALLERY SECTION */
 .gallery {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 20px;
-  padding: 60px 10%;
+  padding: 80px 10%;
   background: #111;
 }
 
 .gallery img {
   width: 30%;
-  max-width: 300px;
-  border-radius: 10px;
+  border-radius: 8px;
   object-fit: cover;
 }
 
 /* CONTACT SECTION */
 .contact {
-  background: #000;
+  padding: 100px 10%;
+  background: #111;
   text-align: center;
-  padding: 60px 20px;
 }
 
 .contact h2 {
-  font-size: 2rem;
   margin-bottom: 20px;
 }
 
 .contact a {
-  color: #fff;
+  color: #ffcc00;
   text-decoration: none;
-  border-bottom: 1px solid #fff;
 }
 
 .contact a:hover {
-  color: #aaa;
+  text-decoration: underline;
 }
 
 /* FOOTER */
 footer {
-  text-align: center;
+  background: #000;
   padding: 20px;
-  background: #111;
-  font-size: 0.9rem;
-  color: #666;
+  text-align: center;
+  font-size: 14px;
+  color: #777;
 }
 
-/* RESPONSIVE MOBILE */
+/* ---------- INFORMATION PAGE ---------- */
+.info-page {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* LEFT COLUMN (animated labels) */
+.info-nav {
+  position: sticky;
+  top: 0;
+  width: 25%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.info-nav span {
+  opacity: 0;
+  position: absolute;
+  transition: opacity 0.8s ease;
+}
+
+.info-nav span.active {
+  opacity: 1;
+}
+
+/* RIGHT CONTENT */
+.info-content {
+  width: 75%;
+  padding: 60px;
+  background: #111;
+  overflow: auto;
+}
+
+.info-content section {
+  margin-bottom: 200px;
+}
+
+.info-content h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #ffcc00;
+}
+
+.info-content p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #ddd;
+}
+
+/* ---------- MOBILE ---------- */
 @media (max-width: 768px) {
-  .hero-content h1 {
-    font-size: 2rem;
-  }
-  .hero-content p {
-    font-size: 1rem;
-  }
   .featured {
     flex-direction: column;
   }
+
   .gallery {
     flex-direction: column;
-    align-items: center;
   }
+
   .gallery img {
     width: 80%;
+  }
+
+  .info-page {
+    flex-direction: column;
+  }
+
+  .info-nav {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .info-content {
+    width: 100%;
+    padding: 20px;
   }
 }
