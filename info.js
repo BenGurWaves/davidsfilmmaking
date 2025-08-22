@@ -1,25 +1,19 @@
-// info.js
 document.addEventListener("DOMContentLoaded", () => {
-  const sections = document.querySelectorAll(".info-section");
-  const dynamicTitle = document.getElementById("dynamic-title");
+  const sections = document.querySelectorAll(".info-content section");
+  const labels = document.querySelectorAll(".info-nav span");
 
-  function updateTitle() {
-    let index = sections.length;
-    while (--index && window.scrollY + 200 < sections[index].offsetTop) {}
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          labels.forEach((label) => label.classList.remove("active"));
+          const index = Array.from(sections).indexOf(entry.target);
+          labels[index].classList.add("active");
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
 
-    const newTitle = sections[index].getAttribute("data-title");
-    if (dynamicTitle.textContent !== newTitle) {
-      dynamicTitle.classList.remove("fade-in");
-      dynamicTitle.classList.add("fade-out");
-
-      setTimeout(() => {
-        dynamicTitle.textContent = newTitle;
-        dynamicTitle.classList.remove("fade-out");
-        dynamicTitle.classList.add("fade-in");
-      }, 300); // matches CSS transition
-    }
-  }
-
-  updateTitle();
-  window.addEventListener("scroll", updateTitle);
+  sections.forEach((section) => observer.observe(section));
 });
