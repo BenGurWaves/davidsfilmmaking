@@ -1,59 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>David Ivanyuck Filmmaking</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>David Ivanyuck — Filmmaking</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- HERO SECTION -->
-  <section class="hero">
-    <video autoplay muted loop playsinline>
+  <header class="hero">
+    <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="IMG-20250705-WA0021.jpg">
       <source src="DavBakGrain.mp4" type="video/mp4">
-      <!-- fallback if video fails -->
-      <img src="IMG-20250705-WA0021.jpg" alt="Background fallback">
+      <!-- fallback -->
+      <img src="IMG-20250705-WA0021.jpg" alt="David Ivanyuck background">
     </video>
+
     <nav class="top-nav">
       <a href="information.html" class="info-btn">Information</a>
     </nav>
+
     <div class="hero-content">
       <h1>David Ivanyuck</h1>
       <p>I’m a Filmmaker / Artist.<br>This is my website, Enjoy.</p>
     </div>
-  </section>
+  </header>
 
-  <!-- FEATURED SECTION -->
+  <!-- FEATURED FILM SECTION -->
   <section class="featured">
     <div class="featured-text">
       <h2>Why Do I Make Films?</h2>
       <p>
-        I challenged myself to create something that I was going to be proud of for the rest of my life.  
-        This film is that, even though there is no groundbreaking cinematography and lighting.  
-        This film goes deep into my filmmaking struggles and my life as an artist.  
-        <br><br>
-        Please watch this in one sitting, taking breaks will ruin the film.  
-        This is by far the most tasking and hardest thing I have ever done.  
-        I really enjoyed making this, and I hope you enjoy it as well.
+        I challenged myself to create something that I was going to be proud of for the rest of my life.
+        This film is that, even though there is no groundbreaking cinematography or lighting.
+        This film goes deep into my filmmaking struggles, and my life as an artist.
+      </p>
+      <p>
+        Please watch this in one sitting — taking breaks will ruin the film. This is by far the most
+        tasking and hardest thing I have ever done. I really enjoyed making this, and I hope you enjoy it as well.
       </p>
     </div>
+
     <div class="featured-video">
-      <video controls>
-        <source src="WhyDoIMakeFilms.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+      <!-- keep the YouTube embed or replace with self-hosted <video> as you prefer -->
+      <iframe width="560" height="315"
+        src="https://www.youtube.com/embed/0en2aZywbXM?si=BjIOPw_Yi-g7MH70"
+        title="YouTube video player" frameborder="0" allowfullscreen></iframe>
     </div>
   </section>
 
-  <!-- GALLERY SECTION -->
+  <!-- GALLERY -->
   <section class="gallery">
-    <img src="IMG-20250705-WA0021.jpg" alt="Gallery image 1">
-    <img src="IMG-20250705-WA0020.jpg" alt="Gallery image 2">
-    <img src="IMG-20250705-WA0019.jpg" alt="Gallery image 3">
+    <img src="IMG-20250705-WA0021.jpg" alt="Gallery 1">
+    <img src="IMG-20250705-WA0020.jpg" alt="Gallery 2">
+    <img src="IMG-20250705-WA0019.jpg" alt="Gallery 3">
   </section>
 
-  <!-- CONTACT SECTION -->
+  <!-- CONTACT -->
   <section class="contact">
     <h2>Contact</h2>
     <p>For brand inquiries reach out to<br>
